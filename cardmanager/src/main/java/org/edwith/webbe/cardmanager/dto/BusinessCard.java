@@ -1,7 +1,6 @@
 package org.edwith.webbe.cardmanager.dto;
 
 import java.util.Date;
-
 public class BusinessCard {
     private String name;
     private String phone;

@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="36ea8788-4615-4dff-b1fd-0b3732941fca" name="Default Changelist" comment="" />
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="36ea8788-4615-4dff-b1fd-0b3732941fca" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/edwith/webbe/cardmanager/dao/BusinessCardManagerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/edwith/webbe/cardmanager/dao/BusinessCardManagerDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/edwith/webbe/cardmanager/dto/BusinessCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/edwith/webbe/cardmanager/dto/BusinessCard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/CardManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/CardManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/dao/BusinessCardManagerDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/dao/BusinessCardManagerDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/dto/BusinessCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/dto/BusinessCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/ui/CardManagerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/ui/CardManagerUI.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +58,9 @@
       </file>
     </leaf>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -57,19 +69,14 @@
       </list>
     </option>
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="563" />
     <option name="y" value="95" />
     <option name="width" value="1954" />
     <option name="height" value="1176" />
   </component>
+  <component name="ProjectId" id="1nEHXBpz28TExb5bLRp9CyYTduT" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -143,27 +150,22 @@
       <pane id="Scope" />
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="CardManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -185,6 +187,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="36ea8788-4615-4dff-b1fd-0b3732941fca" name="Default Changelist" comment="" />
@@ -194,6 +197,11 @@
       <updated>1581842005409</updated>
       <workItem from="1581842006533" duration="1555000" />
       <workItem from="1582352140415" duration="6000" />
+      <workItem from="1610948371365" duration="607000" />
+      <workItem from="1610949075984" duration="202000" />
+      <workItem from="1610949340851" duration="23000" />
+      <workItem from="1610949601342" duration="31000" />
+      <workItem from="1610949805864" duration="358000" />
     </task>
     <servers />
   </component>
@@ -237,7 +245,19 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/org/edwith/webbe/cardmanager/dao/BusinessCardManagerDao.java">
