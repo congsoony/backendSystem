@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="36ea8788-4615-4dff-b1fd-0b3732941fca" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/edwith/webbe/cardmanager/dao/BusinessCardManagerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/edwith/webbe/cardmanager/dao/BusinessCardManagerDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/CardManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/CardManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/dao/BusinessCardManagerDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/dao/BusinessCardManagerDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/dto/BusinessCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/dto/BusinessCard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/ui/CardManagerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/ui/CardManagerUI.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +184,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.CardManager" />
@@ -203,7 +215,7 @@
       <workItem from="1610949075984" duration="202000" />
       <workItem from="1610949340851" duration="23000" />
       <workItem from="1610949601342" duration="31000" />
-      <workItem from="1610949805864" duration="3955000" />
+      <workItem from="1610949805864" duration="7293000" />
     </task>
     <servers />
   </component>
