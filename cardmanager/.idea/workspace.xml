@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36ea8788-4615-4dff-b1fd-0b3732941fca" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/edwith/webbe/cardmanager/dao/BusinessCardManagerDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/edwith/webbe/cardmanager/dao/BusinessCardManagerDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/edwith/webbe/cardmanager/dto/BusinessCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/edwith/webbe/cardmanager/dto/BusinessCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/CardManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/CardManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/dao/BusinessCardManagerDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/dao/BusinessCardManagerDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/dto/BusinessCard.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/dto/BusinessCard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/ui/CardManagerUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/edwith/webbe/cardmanager/ui/CardManagerUI.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,6 +156,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -201,7 +203,7 @@
       <workItem from="1610949075984" duration="202000" />
       <workItem from="1610949340851" duration="23000" />
       <workItem from="1610949601342" duration="31000" />
-      <workItem from="1610949805864" duration="358000" />
+      <workItem from="1610949805864" duration="3955000" />
     </task>
     <servers />
   </component>
@@ -258,6 +260,18 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/org/edwith/webbe/cardmanager/dto/BusinessCard.java</url>
+          <line>6</line>
+          <properties field="companyName" class="org.edwith.webbe.cardmanager.dto.BusinessCard" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/org/edwith/webbe/cardmanager/dao/BusinessCardManagerDao.java">
