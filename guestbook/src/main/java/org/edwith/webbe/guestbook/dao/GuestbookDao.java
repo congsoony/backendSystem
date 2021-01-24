@@ -11,15 +11,37 @@ import java.util.Date;
 import java.util.List;
 
 public class GuestbookDao {
-    public List<Guestbook> getGuestbooks(){
-        List<Guestbook> list = new ArrayList<>();
 
-        // 코드를 작성하세요.
+	private Connection conn;
 
-        return list;
-    }
+	public GuestbookDao(Connection conn) {
+		this.conn = conn;
+	}
 
-    public void addGuestbook(Guestbook guestbook){
-        // 코드를 작성하세요.
-    }
+	public List<Guestbook> getGuestbooks() {
+
+		List<Guestbook> list = new ArrayList<>();
+
+		String sql = "SELECT * FROM guestbook ORDER BY id DESC";
+
+		try (PreparedStatement ps = conn.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery()) {
+
+			while (rs.next()) {
+				Long id = rs.getLong("id");
+				String name = rs.getString("name");
+				String content = rs.getString("content");
+				Date regdate = rs.getDate("regdate");
+				
+				list.add(new Guestbook(id, name, content, regdate));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public void addGuestbook(Guestbook guestbook) {
+		// 코드를 작성하세요.
+	}
 }

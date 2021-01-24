@@ -2,6 +2,7 @@ package org.edwith.webbe.guestbook.servlet;
 
 import org.edwith.webbe.guestbook.dao.GuestbookDao;
 import org.edwith.webbe.guestbook.dto.Guestbook;
+import org.edwith.webbe.guestbook.util.DBUtil;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,7 +20,11 @@ public class GuestbookListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
+		GuestbookDao dao =new GuestbookDao(DBUtil.getConnection());
+		
+		request.setAttribute("list", dao.getGuestbooks());
+		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("guestbooks.jsp");
 		requestDispatcher.forward(request, response);
 	}
