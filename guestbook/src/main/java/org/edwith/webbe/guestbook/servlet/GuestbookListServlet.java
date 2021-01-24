@@ -17,8 +17,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/guestbooks")
 public class GuestbookListServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 코드를 작성하세요.
-    }
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("guestbooks.jsp");
+		requestDispatcher.forward(request, response);
+	}
 
 }
