@@ -2,7 +2,9 @@ package org.edwith.webbe.guestbook.servlet;
 
 import org.edwith.webbe.guestbook.dao.GuestbookDao;
 import org.edwith.webbe.guestbook.dto.Guestbook;
+import org.edwith.webbe.guestbook.util.DBUtil;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,9 +15,25 @@ import java.io.PrintWriter;
 
 @WebServlet("/guestbooks/write")
 public class GuestbookWriteServlet extends HttpServlet {
+	private GuestbookDao dao;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 코드를 작성하세요.
-    }
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		dao = new GuestbookDao(DBUtil.getConnection());
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		request.setCharacterEncoding("UTF-8"); //받은 데이터 한글인식
+		
+		String name = request.getParameter("name");
+		
+		String content = request.getParameter("content");
+
+		dao.addGuestbook(new Guestbook(name, content));
+		
+		response.sendRedirect("/guestbook/guestbooks");
+	}
 
 }

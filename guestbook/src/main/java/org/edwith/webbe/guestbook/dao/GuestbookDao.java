@@ -32,7 +32,7 @@ public class GuestbookDao {
 				String name = rs.getString("name");
 				String content = rs.getString("content");
 				Date regdate = rs.getDate("regdate");
-				
+
 				list.add(new Guestbook(id, name, content, regdate));
 			}
 		} catch (Exception e) {
@@ -42,6 +42,18 @@ public class GuestbookDao {
 	}
 
 	public void addGuestbook(Guestbook guestbook) {
-		// 코드를 작성하세요.
+		
+		String sql = "INSERT INTO guestbook(name,content,regdate) VALUES(?,?,now())";
+
+		try (PreparedStatement ps = conn.prepareStatement(sql)) {
+
+			ps.setString(1, guestbook.getName());
+			ps.setString(2, guestbook.getContent());
+			ps.executeUpdate();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		
 	}
 }
