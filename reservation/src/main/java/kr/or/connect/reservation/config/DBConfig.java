@@ -7,12 +7,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 @Configuration
 @EnableTransactionManagement
 @PropertySource({"classpath:/application.properties"})
-public class DBConfig {
+public class DBConfig implements TransactionManagementConfigurer{
 	@Value("${spring.datasource.driver-class-name}")
 	private String driverClassName;
 	@Value("${spring.datasource.url}")
@@ -32,4 +36,15 @@ public class DBConfig {
 		return dataSource;
 
 	}
+
+	@Override
+	public PlatformTransactionManager annotationDrivenTransactionManager() {
+		return transactionManger();
+	}
+
+	@Bean
+	public PlatformTransactionManager transactionManger() {
+		return new DataSourceTransactionManager(dataSource());
+	}
+	
 }
