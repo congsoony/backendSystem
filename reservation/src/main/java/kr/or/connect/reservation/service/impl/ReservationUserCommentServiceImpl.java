@@ -17,7 +17,7 @@ public class ReservationUserCommentServiceImpl implements ReservationUserComment
 	
 	@Override
 	@Transactional(readOnly = true)
-	public int getAvgScore(int displayId) {
+	public Integer getAvgScore(int displayId) {
 		return dao.getAvgScoreByDisplayInfoId(displayId);
 	}
 
@@ -29,7 +29,7 @@ public class ReservationUserCommentServiceImpl implements ReservationUserComment
 
 	@Override
 	@Transactional(readOnly = true)
-	public int getTotalCount(int productId) {
+	public Integer getTotalCount(int productId) {
 		return dao.getTotalCountByProductId(productId);
 	}
 

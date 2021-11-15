@@ -22,7 +22,7 @@ public class ReservationUserCommentDao {
 	public ReservationUserCommentDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
-	public int getAvgScoreByDisplayInfoId(int displayId) {
+	public Integer getAvgScoreByDisplayInfoId(int displayId) {
 		return jdbc.queryForObject(SELECT_AVG_SCORE+BY_DISPLAY_INFO_ID,Collections.singletonMap("displayInfoId", displayId), Integer.class);
 	}
 	public List<ReservationUserComment> selectByProductId(int productId,int start,int limit) {
@@ -32,7 +32,7 @@ public class ReservationUserCommentDao {
 		params.put("productId", productId);
 		return jdbc.query(SELECT_USER_COMMENT+LIMIT_BY_PRODUCT_ID,params,rowMapper);
 	}
-	public int getTotalCountByProductId(int productId) {
+	public Integer getTotalCountByProductId(int productId) {
 		return jdbc.queryForObject(SELECT_TOTAL_COUNT+BY_PRODUCT_ID,Collections.singletonMap("productId", productId), Integer.class);
 	}
 }
