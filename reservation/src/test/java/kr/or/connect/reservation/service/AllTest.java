@@ -84,7 +84,7 @@ public class AllTest {
 	@Test
 	public void ErrorTest() {
 		try {
-			//displayid가 없는값 주기
+			//displayId가 없는값 주기
 			Product p = productService.getDisplayInfo(100);
 			Assert.fail();
 		}catch(RuntimeException e) {
