@@ -18,7 +18,7 @@ public class ProductPriceServiceImpl implements ProductPriceService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<ProductPrice> getDisplayInfo(int displayId) {
+	public List<ProductPrice> getDisplayInfos(int displayId) {
 		return dao.selectByDisplayInfoId(displayId);
 	}
 
