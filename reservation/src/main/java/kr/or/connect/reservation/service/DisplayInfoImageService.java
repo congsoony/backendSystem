@@ -4,9 +4,10 @@ import static kr.or.connect.reservation.dao.sqls.DisplayInfoImageDaoSqls.BY_DISP
 import static kr.or.connect.reservation.dao.sqls.DisplayInfoImageDaoSqls.SELECT_DI_IMAGE;
 
 import java.util.Collections;
+import java.util.List;
 
 import kr.or.connect.reservation.dto.DisplayInfoImage;
 
 public interface DisplayInfoImageService {
-	public DisplayInfoImage getDisplayInfo(int displayId);
+	public List<DisplayInfoImage> getDisplayInfos(int displayId);
 }

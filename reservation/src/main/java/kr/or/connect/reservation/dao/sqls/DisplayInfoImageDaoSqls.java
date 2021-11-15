@@ -12,5 +12,4 @@ public class DisplayInfoImageDaoSqls {
 			+ "inner join display_info di on dii.display_info_id = di.id\r\n"
 			+ "inner join file_info fi on dii.file_id = fi.id\r\n";
 	public static final String BY_DISPLAY_INFO_ID ="where di.id = :displayInfoId";
-	
 }

@@ -11,6 +11,7 @@ import kr.or.connect.reservation.dto.DisplayInfoImage;
 import static kr.or.connect.reservation.dao.sqls.DisplayInfoImageDaoSqls.*;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 @Repository
 public class DisplayInfoImageDao {
@@ -20,7 +21,7 @@ public class DisplayInfoImageDao {
 	public DisplayInfoImageDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
-	public DisplayInfoImage selectByDisplayInfoId(int displayId) {
-		return jdbc.queryForObject(SELECT_DI_IMAGE+BY_DISPLAY_INFO_ID, Collections.singletonMap("displayInfoId",displayId), rowMapper);	
+	public List<DisplayInfoImage> selectByDisplayInfoId(int displayId) {
+		return jdbc.query(SELECT_DI_IMAGE+BY_DISPLAY_INFO_ID, Collections.singletonMap("displayInfoId",displayId), rowMapper);	
 	}
 }
