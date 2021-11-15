@@ -1,39 +1,40 @@
 package kr.or.connect.reservation.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationUserComment {
-	private int id;
-	private int productId;
-	private int reservationInfoId;
-	private int score;
+	private Integer id;
+	private Integer productId;
+	private Integer reservationInfoId;
+	private Integer score;
 	private String reservationEmail;
 	private String comment;
 	private String createDate;
 	private String modifyDate;
-	private List<ReservationUserCommentImage> reservationUserCommentImages;
-	public int getId() {
+	private List<ReservationUserCommentImage> reservationUserCommentImages=new ArrayList<>();
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public int getProductId() {
+	public Integer getProductId() {
 		return productId;
 	}
-	public void setProductId(int productId) {
+	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
-	public int getReservationInfoId() {
+	public Integer getReservationInfoId() {
 		return reservationInfoId;
 	}
-	public void setReservationInfoId(int reservationInfoId) {
+	public void setReservationInfoId(Integer reservationInfoId) {
 		this.reservationInfoId = reservationInfoId;
 	}
-	public int getScore() {
+	public Integer getScore() {
 		return score;
 	}
-	public void setScore(int score) {
+	public void setScore(Integer score) {
 		this.score = score;
 	}
 	public String getReservationEmail() {
@@ -73,5 +74,6 @@ public class ReservationUserComment {
 				+ comment + ", createDate=" + createDate + ", modifyDate=" + modifyDate
 				+ ", reservationUserCommentImages=" + reservationUserCommentImages + "]";
 	}
+	
 	
 }

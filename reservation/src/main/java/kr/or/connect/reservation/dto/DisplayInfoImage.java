@@ -1,31 +1,31 @@
 package kr.or.connect.reservation.dto;
 
 public class DisplayInfoImage {
-	private int id;
-	private int displayInfoId;
-	private int fileId;
+	private Integer id;
+	private Integer displayInfoId;
+	private Integer fileId;
 	private String fileName;
 	private String saveFileName;
 	private String contentType;
-	private int deleteFlag;
+	private Integer deleteFlag;
 	private String createDate;
 	private String modifyDate;
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public int getDisplayInfoId() {
+	public Integer getDisplayInfoId() {
 		return displayInfoId;
 	}
-	public void setDisplayInfoId(int displayInfoId) {
+	public void setDisplayInfoId(Integer displayInfoId) {
 		this.displayInfoId = displayInfoId;
 	}
-	public int getFileId() {
+	public Integer getFileId() {
 		return fileId;
 	}
-	public void setFileId(int fileId) {
+	public void setFileId(Integer fileId) {
 		this.fileId = fileId;
 	}
 	public String getFileName() {
@@ -46,10 +46,10 @@ public class DisplayInfoImage {
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
 	}
-	public int getDeleteFlag() {
+	public Integer getDeleteFlag() {
 		return deleteFlag;
 	}
-	public void setDeleteFlag(int deleteFlag) {
+	public void setDeleteFlag(Integer deleteFlag) {
 		this.deleteFlag = deleteFlag;
 	}
 	public String getCreateDate() {

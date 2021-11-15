@@ -1,9 +1,9 @@
 package kr.or.connect.reservation.dto;
 
 public class Product {
-	private int id;
-	private int categoryId;
-	private int displayInfoId;
+	private Integer id;
+	private Integer categoryId;
+	private Integer displayInfoId;
 	private String name;
 	private String description;
 	private String content;
@@ -16,23 +16,23 @@ public class Product {
 	private String email;
 	private String createDate;
 	private String modifyDate;
-	private int fileId;
-	public int getId() {
+	private Integer fileId;
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public int getCategoryId() {
+	public Integer getCategoryId() {
 		return categoryId;
 	}
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
 	}
-	public int getDisplayInfoId() {
+	public Integer getDisplayInfoId() {
 		return displayInfoId;
 	}
-	public void setDisplayInfoId(int displayInfoId) {
+	public void setDisplayInfoId(Integer displayInfoId) {
 		this.displayInfoId = displayInfoId;
 	}
 	public String getName() {
@@ -107,10 +107,10 @@ public class Product {
 	public void setModifyDate(String modifyDate) {
 		this.modifyDate = modifyDate;
 	}
-	public int getFileId() {
+	public Integer getFileId() {
 		return fileId;
 	}
-	public void setFileId(int fileId) {
+	public void setFileId(Integer fileId) {
 		this.fileId = fileId;
 	}
 	@Override

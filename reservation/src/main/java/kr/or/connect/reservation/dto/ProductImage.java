@@ -1,26 +1,26 @@
 package kr.or.connect.reservation.dto;
 
 public class ProductImage {
-	private int productId;
-	private int productImageId;
+	private Integer productId;
+	private Integer productImageId;
 	private String type;
-	private int fileInfoId;
+	private Integer fileInfoId;
 	private String fileName;
 	private String saveFileName;
 	private String contentType;
-	private int deleteFlag;
+	private Integer deleteFlag;
 	private String createDate;
 	private String modifyDate;
-	public int getProductId() {
+	public Integer getProductId() {
 		return productId;
 	}
-	public void setProductId(int productId) {
+	public void setProductId(Integer productId) {
 		this.productId = productId;
 	}
-	public int getProductImageId() {
+	public Integer getProductImageId() {
 		return productImageId;
 	}
-	public void setProductImageId(int productImageId) {
+	public void setProductImageId(Integer productImageId) {
 		this.productImageId = productImageId;
 	}
 	public String getType() {
@@ -29,10 +29,10 @@ public class ProductImage {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public int getFileInfoId() {
+	public Integer getFileInfoId() {
 		return fileInfoId;
 	}
-	public void setFileInfoId(int fileInfoId) {
+	public void setFileInfoId(Integer fileInfoId) {
 		this.fileInfoId = fileInfoId;
 	}
 	public String getFileName() {
@@ -53,10 +53,10 @@ public class ProductImage {
 	public void setContentType(String contentType) {
 		this.contentType = contentType;
 	}
-	public int getDeleteFlag() {
+	public Integer getDeleteFlag() {
 		return deleteFlag;
 	}
-	public void setDeleteFlag(int deleteFlag) {
+	public void setDeleteFlag(Integer deleteFlag) {
 		this.deleteFlag = deleteFlag;
 	}
 	public String getCreateDate() {
@@ -78,5 +78,6 @@ public class ProductImage {
 				+ ", contentType=" + contentType + ", deleteFlag=" + deleteFlag + ", createDate=" + createDate
 				+ ", modifyDate=" + modifyDate + "]";
 	}
+	
 	
 }
