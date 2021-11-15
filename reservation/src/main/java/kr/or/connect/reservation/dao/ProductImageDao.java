@@ -12,6 +12,7 @@ import kr.or.connect.reservation.dto.ProductImage;
 import static kr.or.connect.reservation.dao.sqls.ProductImageDaoSqls.*;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 @Repository
 public class ProductImageDao {
@@ -22,8 +23,8 @@ public class ProductImageDao {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 	
-	public ProductImage selectByDisplayInfoId(int displayId) {
+	public List<ProductImage> selectByDisplayInfoId(int displayId) {
 		Map<String, Integer> params = Collections.singletonMap("displayInfoId",displayId);
-		return jdbc.queryForObject(SELECT_PRODUCT_IMAGE+BY_DISPLAY_INFO_ID,params,rowMapper);
+		return jdbc.query(SELECT_PRODUCT_IMAGE+BY_DISPLAY_INFO_ID,params,rowMapper);
 	}
 }

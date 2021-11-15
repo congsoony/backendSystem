@@ -1,7 +1,9 @@
 package kr.or.connect.reservation.service;
 
+import java.util.List;
+
 import kr.or.connect.reservation.dto.ProductImage;
 
 public interface ProductImageService {
-	public ProductImage getDisplayInfo(int displayId);
+	public List<ProductImage> getDisplayInfos(int displayId);
 }
