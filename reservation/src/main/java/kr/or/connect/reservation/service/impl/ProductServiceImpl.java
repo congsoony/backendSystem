@@ -40,8 +40,16 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Product getDisplayInfo(int displayId) {
+	public Product getDisplayInfo(int displayId) throws RuntimeException{
+		if(dao.isExistByDisplayInfoId(displayId)==false)
+			throw new RuntimeException("잘못된 요청입니다.");
 		return dao.selectByDisplayInfoId(displayId);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Boolean isExistDisplayInfo(int displayId) {
+		return dao.isExistByDisplayInfoId(displayId);
 	}
 
 }

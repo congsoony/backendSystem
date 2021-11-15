@@ -15,5 +15,5 @@ public interface ProductService {
 	public Integer getDisplayCount(int categoryId);
 	public Product getDisplayInfo(int displayId);
 	public List<Product> getDisplayAllInfos(int start);
-	
+	public Boolean isExistDisplayInfo(int displayId);
 }

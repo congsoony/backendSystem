@@ -18,5 +18,7 @@ public class ProductDaoSqls {
 	public static final String OF_CATEGORY = "where c.id =:categoryId\r\n";
 	
 	public static final String BY_DISPLAY_INFO_ID = "where di.id = :displayInfoId";
+
+	public static final String IS_EXIST_BY_DISPLAY_INFO_ID ="select exists (select * from display_info di where di.id=:displayInfoId) as chk";
 	
 }
