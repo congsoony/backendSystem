@@ -53,4 +53,8 @@ public class ProductDao {
 		return jdbc.queryForObject(SELECT_ALL+BY_DISPLAY_INFO_ID,params,rowMapper);
 		
 	}
+	public Boolean isExistByDisplayInfoId(int displayId) {
+		return jdbc.queryForObject(IS_EXIST_BY_DISPLAY_INFO_ID, Collections.singletonMap("displayInfoId", displayId),Boolean.class);
+	}
+	
 }
