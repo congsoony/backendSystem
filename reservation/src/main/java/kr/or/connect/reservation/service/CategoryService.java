@@ -5,6 +5,6 @@ import java.util.List;
 import kr.or.connect.reservation.dto.Category;
 
 public interface CategoryService {
-	public List<Category> getCategories();
+	List<Category> getCategories();
 	
 }

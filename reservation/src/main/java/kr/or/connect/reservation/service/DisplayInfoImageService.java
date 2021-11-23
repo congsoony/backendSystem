@@ -9,5 +9,5 @@ import java.util.List;
 import kr.or.connect.reservation.dto.DisplayInfoImage;
 
 public interface DisplayInfoImageService {
-	public List<DisplayInfoImage> getDisplayInfos(int displayId);
+	List<DisplayInfoImage> getDisplayInfos(int displayId);
 }
