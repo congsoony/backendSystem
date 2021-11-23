@@ -46,10 +46,4 @@ public class ProductServiceImpl implements ProductService {
 		return dao.selectByDisplayInfoId(displayId);
 	}
 
-	@Override
-	@Transactional(readOnly = true)
-	public Boolean isExistDisplayInfo(int displayId) {
-		return dao.isExistByDisplayInfoId(displayId);
-	}
-
 }
