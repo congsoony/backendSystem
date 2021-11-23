@@ -43,7 +43,7 @@ public class DisplayInfoApiController {
 			@RequestParam(name = "start", required = false, defaultValue = "0") int start) {
 		// catgoryId와 productId 둘중 하나의 값만 올수있음
 		if (categoryId != 0 && productId != 0) {
-			return new ResponseEntity<Map<String, Object>>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		Map<String, Object> map = new HashMap<>();
 		int totalCount;
@@ -67,7 +67,7 @@ public class DisplayInfoApiController {
 			map.put("commentCount", list.size());
 			map.put("reservationUserComments", list);
 		}
-		return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+		return new ResponseEntity<>(map, HttpStatus.OK);
 
 	}
 
@@ -81,9 +81,9 @@ public class DisplayInfoApiController {
 			map.put("avgScore", reservationUserCommentService.getAvgScore(displayId));
 			map.put("productPrices", productPriceService.getDisplayInfos(displayId));
 		} catch (RuntimeException e) {
-			return new ResponseEntity<Map<String, Object>>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<Map<String, Object>>(map, HttpStatus.OK);
+		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
 
 }
