@@ -40,9 +40,9 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Product getDisplayInfo(int displayId) throws RuntimeException{
+	public Product getDisplayInfo(int displayId) throws IllegalArgumentException{
 		if(dao.isExistByDisplayInfoId(displayId)==false)
-			throw new RuntimeException("잘못된 요청입니다.");
+			throw new IllegalArgumentException("잘못된 요청입니다.");
 		return dao.selectByDisplayInfoId(displayId);
 	}
 

@@ -81,7 +81,7 @@ public class AllTest {
 		Assert.assertEquals(totalCount, 15);
 		Assert.assertEquals(list.size(), 5);
 	}
-	@Test(expected = RuntimeException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void ErrorTest() {
 		Product p = productService.getDisplayInfo(100);	
 	}
