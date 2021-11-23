@@ -81,14 +81,8 @@ public class AllTest {
 		Assert.assertEquals(totalCount, 15);
 		Assert.assertEquals(list.size(), 5);
 	}
-	@Test
+	@Test(expected = RuntimeException.class)
 	public void ErrorTest() {
-		try {
-			//displayId가 없는값 주기
-			Product p = productService.getDisplayInfo(100);
-			Assert.fail();
-		}catch(RuntimeException e) {
-			Assert.assertTrue(true);
-		}
+		Product p = productService.getDisplayInfo(100);	
 	}
 }
