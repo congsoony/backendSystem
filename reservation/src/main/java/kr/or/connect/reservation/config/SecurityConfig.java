@@ -12,7 +12,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		// 해당경로에 대한 요청은 인증/인가 처리하지 않도록 무시합니다.
-		web.ignoring().antMatchers("/api/categories","/api/displayinfos**","/api/promotions","/api/displayinfos/**");
+		web.ignoring().antMatchers("/api/categories","/api/displayinfos**","/api/promotions","/api/displayinfos/**"
+				//swagger관련 리소스 시큐리티 필터 제거
+				,"/v2/api-docs","/swagger-resources/**","swagger-ui.html","/webjars/**","/swagger/**"
+				);
 	}
 	
 }
