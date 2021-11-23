@@ -38,9 +38,9 @@ public class DisplayInfoApiController {
 
 	@GetMapping("/displayinfos")
 	public ResponseEntity<Map<String, Object>> getDisplayInfos(
-			@RequestParam(name = "categoryId", required = false, defaultValue = "0") int categoryId,
-			@RequestParam(name = "productId", required = false, defaultValue = "0") int productId,
-			@RequestParam(name = "start", required = false, defaultValue = "0") int start) {
+			@RequestParam(defaultValue = "0") int categoryId,
+			@RequestParam(defaultValue = "0") int productId,
+			@RequestParam(defaultValue = "0") int start) {
 		// catgoryId와 productId 둘중 하나의 값만 올수있음
 		if (categoryId != 0 && productId != 0) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
