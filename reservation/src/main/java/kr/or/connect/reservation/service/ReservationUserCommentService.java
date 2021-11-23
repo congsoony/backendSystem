@@ -5,7 +5,7 @@ import java.util.List;
 import kr.or.connect.reservation.dto.ReservationUserComment;
 
 public interface ReservationUserCommentService {
-	static final Integer LIMIT = 5;
+	Integer LIMIT = 5;
 	Integer getAvgScore(int displayId);
 
 	List<ReservationUserComment> getDisplayInfos(int productId, int start);
