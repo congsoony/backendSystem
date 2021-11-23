@@ -50,5 +50,10 @@ public class User {
 	public void setModifyDate(String modifyDate) {
 		this.modifyDate = modifyDate;
 	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", password=" + password + ", email=" + email + ", phone=" + phone
+				+ ", createDate=" + createDate + ", modifyDate=" + modifyDate + "]";
+	}
 	
 }
