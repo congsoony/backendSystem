@@ -33,6 +33,22 @@ public class MvcConfig implements WebMvcConfigurer {
 		configurer.enable();
 	}
 
+	@Override
+	public void configureViewResolvers(ViewResolverRegistry registry) {
+		registry.jsp("/WEB-INF/view/", ".jsp");
+	}
+
+        //    '/' 로 요청이 오면 '/main'으로 리다이렉트 하도록 합니다.
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+		registry.addRedirectViewController("/", "/main");
+	}
+
+        //  /resources 경로에 있는 자료들을 /resources/**로 접근하게 합니다.
+	@Override
+	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+	}
 /*
     	Swagger 사용 시에는 Docket Bean 을 품고있는 설정 클래스 1개가 기본으로 필요하다.
     	Spring Boot 에서는 이 기본적인 설정파일 1개로 Swagger 와 Swagger UI 를 함께 사용가능하지만,
