@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().authorizeRequests()
 				.antMatchers("/main", "/users/loginerror").permitAll()
 				//로그인도 되어있어야하고 USER라는 권한을 가지고 있어야 접근할수있음
-				//.antMatchers("/securepage", "/members/**").hasRole("USER")
+				.antMatchers("/api/reservationInfos").hasAnyRole("USER","ADMIN")
 				.anyRequest().authenticated()
 				.and()
 					//loginform을 보여주는 controller 메소드가 작성되어있어야함 UserController에 /users/lgoinform으로 작성되어있음
