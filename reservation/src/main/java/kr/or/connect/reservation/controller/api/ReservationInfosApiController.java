@@ -40,9 +40,19 @@ public class ReservationInfosApiController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Object> makeReservation(@RequestBody ReservationInfosRequest reservationRequest) {
-		
-		ReservationInfoResponse data = reservationInfosService.makeReservation(reservationRequest);
+	public ResponseEntity<Object> makeReservation(@RequestBody ReservationInfosRequest reservationRequest,
+			Principal principal) {
+		String pattern = "^\\d{4}\\.(0[1-9]|1[012])\\.(0[1-9]|[12][0-9]|3[01])$";
+		// 날짜형식 잘못된경우
+		if (reservationRequest.getReservationYearMonthDay().matches(pattern) == false) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		ReservationInfoResponse data;
+		try {
+			data = reservationInfosService.makeReservation(reservationRequest, principal.getName());
+		} catch (IllegalArgumentException e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
 		return new ResponseEntity<>(data, HttpStatus.OK);
 	}
 
