@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.connect.reservation.dao.ReservationInfoDao;
 import kr.or.connect.reservation.dao.ReservationInfoPriceDao;
+import kr.or.connect.reservation.dao.UserDao;
 import kr.or.connect.reservation.dto.MyReservationInfo;
 import kr.or.connect.reservation.dto.ReservationInfo;
 import kr.or.connect.reservation.dto.ReservationInfoPrice;
@@ -24,10 +25,18 @@ public class ReservationInfosServiceImpl implements ReservationInfosService {
 	@Autowired
 	private ReservationInfoPriceDao reservationInfoPriceDao;
 
+	@Autowired
+	private UserDao userDao;
+	
 	@Override
 	@Transactional
-	public ReservationInfoResponse makeReservation(ReservationInfosRequest data) {
-		int reservationInfoId = reservationInfoDao.insertReseravtionInfos(data);
+	public ReservationInfoResponse makeReservation(ReservationInfosRequest data,String loginEmail) throws IllegalArgumentException{
+		Integer reservationInfoId = reservationInfoDao.insertReseravtionInfos(data);
+		Integer loginId = userDao.getUserIdByEmail(loginEmail);
+		
+		if(data.getUserId()!=loginId) {
+			throw new IllegalArgumentException("잘못된 접근입니다.");
+		}
 		for (ReservationInfoPrice prices : data.getPrices()) {
 			reservationInfoPriceDao.insertReservationInfoPrice(prices.getCount(), prices.getProductPriceId(),
 					reservationInfoId);

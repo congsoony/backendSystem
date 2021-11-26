@@ -50,8 +50,8 @@ public class ReservationInfosTest {
 		data.setReservationYearMonthDay("2020.01.02");
 		data.setUserId(1);	
 		data.setPrices(list);
-		
-		ReservationInfoResponse r= reservationInfosService.makeReservation(data);
+		String loginEmail = "carami@connect.co.kr";
+		ReservationInfoResponse r= reservationInfosService.makeReservation(data,loginEmail);
 		
 		System.out.println(r);
 		System.out.println("테스트 성공");
