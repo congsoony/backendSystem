@@ -1,16 +1,20 @@
 package kr.or.connect.reservation.dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.connect.reservation.config.ApplicationConfig;
+import kr.or.connect.reservation.dto.MyReservationInfo;
 import kr.or.connect.reservation.dto.ReservationInfoPrice;
 import kr.or.connect.reservation.dto.ReservationInfosRequest;
 
@@ -37,7 +41,15 @@ public class ReservationInfosTest {
 	
 	@Test
 	public void printReservationInfo() {
+		
 		System.out.println(dao.getReservationInfo(1));	
+	}
+	@Test 
+	public void printMyReservationInfo() {
+		List<MyReservationInfo> list = dao.getMyReservationInfos("carami@connect.co.kr");
+		System.out.println(list.size());
+		for(MyReservationInfo r:list)
+			System.out.println(r);
 	}
 	
 	@Test 
@@ -46,5 +58,17 @@ public class ReservationInfosTest {
 		for(ReservationInfoPrice r :list)
 			System.out.println(r);
 	
+	}
+	
+	@Test
+	public void updateCancel() {
+		
+		int updateCnt = dao.updateCancelFlag(1);
+		System.out.println(updateCnt);
+		
+	}
+	@Test
+	public void printReservationEmail() {
+		System.out.println(dao.getReservationEmail(1));
 	}
 }
