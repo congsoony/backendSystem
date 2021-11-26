@@ -39,4 +39,9 @@ public class UserTest {
 		for(UserRole r:list)
 			System.out.println(r);
 	}
+	
+	@Test
+	public void getUserIdTest() {
+		System.out.println(dao.getUserIdByEmail("carami@connect.co.kr"));
+	}
 }

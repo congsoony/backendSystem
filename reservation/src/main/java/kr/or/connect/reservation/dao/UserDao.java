@@ -24,5 +24,7 @@ public class UserDao {
 	public User getUserByEmail(String email) {
 		return jdbc.queryForObject(SELECT_ALL + BY_EMAIL, Collections.singletonMap("email", email), rowMapper);
 	}
-
+	public Integer getUserIdByEmail(String email) {
+		return jdbc.queryForObject(SELECT_ID+BY_EMAIL, Collections.singletonMap("email", email), Integer.class);
+	}
 }
