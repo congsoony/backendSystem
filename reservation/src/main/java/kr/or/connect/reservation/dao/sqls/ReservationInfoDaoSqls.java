@@ -20,8 +20,6 @@ public class ReservationInfoDaoSqls {
 	public static final String SELECT_RESERVATION_INFO = "select id,product_id , cancel_flag, display_info_id, user_id,\r\n"
 			+ "reservation_date, create_date, modify_date from reservation_info ri\r\n" + "where ri.id=:id\r\n";
 
-	public static final String DELETE_BY_ID = "delete from reservation_info where id =:id";
-
 	public static final String UPDATE_CANCLE_FLAG_BY_ID = "update reservation_info set cancel_flag =1,modify_date = now() where id =:id";
 
 	public static final String SELECT_RESERVATION_EMAIL = "select u.email as email from reservation_info ri\r\n"

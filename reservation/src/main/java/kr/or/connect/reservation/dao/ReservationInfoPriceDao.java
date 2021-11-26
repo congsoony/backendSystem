@@ -45,8 +45,4 @@ public class ReservationInfoPriceDao {
 				Collections.singletonMap("reservationInfoId", reservationInfoId), rowMapper);
 	}
 	
-	public int deleteReservationInfoPrice(int reservationInfoId) {
-		return jdbc.update(DELETE_BY_RESERVATION_INFO_ID, Collections.singletonMap("reservationInfoId", reservationInfoId));
-	}
-	
 }

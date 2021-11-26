@@ -54,9 +54,6 @@ public class ReservationInfoDao {
 		return jdbc.queryForObject(SELECT_RESERVATION_INFO, Collections.singletonMap("id", id), rowMapper);
 	}
 
-	public int deleteReservationInfo(int id) {
-		return jdbc.update(DELETE_BY_ID, Collections.singletonMap("id", id));
-	}
 	public int updateCancelFlag(int id) {
 		return jdbc.update(UPDATE_CANCLE_FLAG_BY_ID, Collections.singletonMap("id", id));
 	}
