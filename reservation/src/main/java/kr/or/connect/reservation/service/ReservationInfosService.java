@@ -11,4 +11,5 @@ public interface ReservationInfosService {
 	ReservationInfoResponse makeReservation(ReservationInfosRequest data);
 	ReservationInfo getReservationInfo(int id);
 	List<MyReservationInfo> getMyReservationInfos(String email);
+	int cancelReservation(int reservationInfoId,String loginEmail);
 }
