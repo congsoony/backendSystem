@@ -1,6 +1,9 @@
 package kr.or.connect.reservation.controller.api;
 
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -42,9 +45,11 @@ public class ReservationInfosApiController {
 	@PostMapping
 	public ResponseEntity<Object> makeReservation(@RequestBody ReservationInfosRequest reservationRequest,
 			Principal principal) {
-		String pattern = "^\\d{4}\\.(0[1-9]|1[012])\\.(0[1-9]|[12][0-9]|3[01])$";
 		// 날짜형식 잘못된경우
-		if (reservationRequest.getReservationYearMonthDay().matches(pattern) == false) {
+		try {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy.MM.dd");
+			LocalDate.parse(reservationRequest.getReservationYearMonthDay(), formatter);
+		} catch (DateTimeParseException e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		ReservationInfoResponse data;
