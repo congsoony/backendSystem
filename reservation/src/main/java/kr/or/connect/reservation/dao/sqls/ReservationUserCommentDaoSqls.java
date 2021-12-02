@@ -1,7 +1,7 @@
 package kr.or.connect.reservation.dao.sqls;
 
 public class ReservationUserCommentDaoSqls {
-	public static final String SELECT_AVG_SCORE="select floor(avg(ruc.score)) as avg_score from reservation_user_comment ruc\r\n"
+	public static final String SELECT_AVG_SCORE="select ifnull(floor(avg(ruc.score)),0) as avg_score from reservation_user_comment ruc\r\n"
 			+ "inner join display_info di on ruc.product_id = di.product_id\r\n";
 	public static final String BY_DISPLAY_INFO_ID ="where di.id = :displayInfoId";
 	
