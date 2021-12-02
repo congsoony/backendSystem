@@ -59,7 +59,6 @@ public class ReservationInfosServiceImpl implements ReservationInfosService {
 	}
 
 	@Override
-	@Transactional
 	public int cancelReservation(int reservationInfoId, String loginEmail) {
 		int updateCnt = 0;
 		String email = reservationInfoDao.getReservationEmail(reservationInfoId);
