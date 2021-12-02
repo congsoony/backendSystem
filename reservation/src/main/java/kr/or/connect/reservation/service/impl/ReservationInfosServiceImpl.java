@@ -31,12 +31,12 @@ public class ReservationInfosServiceImpl implements ReservationInfosService {
 	@Transactional
 	public ReservationInfoResponse makeReservation(ReservationInfosRequest data, String loginEmail)
 			throws IllegalArgumentException {
-		Integer reservationInfoId = reservationInfoDao.insertReseravtionInfos(data);
 		Integer loginId = userDao.getUserIdByEmail(loginEmail);
-
 		if (data.getUserId() != loginId) {
 			throw new IllegalArgumentException("잘못된 접근입니다.");
 		}
+		Integer reservationInfoId = reservationInfoDao.insertReseravtionInfos(data);
+		
 		for (ReservationInfoPrice prices : data.getPrices()) {
 			reservationInfoPriceDao.insertReservationInfoPrice(prices.getCount(), prices.getProductPriceId(),
 					reservationInfoId);
