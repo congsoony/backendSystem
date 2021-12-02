@@ -3,7 +3,6 @@ package kr.or.connect.reservation.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,14 +26,15 @@ public class ReservationInfosServiceImpl implements ReservationInfosService {
 
 	@Autowired
 	private UserDao userDao;
-	
+
 	@Override
 	@Transactional
-	public ReservationInfoResponse makeReservation(ReservationInfosRequest data,String loginEmail) throws IllegalArgumentException{
+	public ReservationInfoResponse makeReservation(ReservationInfosRequest data, String loginEmail)
+			throws IllegalArgumentException {
 		Integer reservationInfoId = reservationInfoDao.insertReseravtionInfos(data);
 		Integer loginId = userDao.getUserIdByEmail(loginEmail);
-		
-		if(data.getUserId()!=loginId) {
+
+		if (data.getUserId() != loginId) {
 			throw new IllegalArgumentException("잘못된 접근입니다.");
 		}
 		for (ReservationInfoPrice prices : data.getPrices()) {
@@ -52,24 +52,23 @@ public class ReservationInfosServiceImpl implements ReservationInfosService {
 		return res;
 	}
 
-
 	@Override
 	@Transactional(readOnly = true)
 	public List<MyReservationInfo> getMyReservationInfos(String email) {
 		return reservationInfoDao.getMyReservationInfos(email);
 	}
-	
+
 	@Override
 	@Transactional
-	public int cancelReservation(int reservationInfoId,String loginEmail) {
-		int updateCnt=0;
+	public int cancelReservation(int reservationInfoId, String loginEmail) {
+		int updateCnt = 0;
 		String email = reservationInfoDao.getReservationEmail(reservationInfoId);
-		//로그인 이메일과 예약자 이메일이 같은지
-		if(email.equals(loginEmail)==false)
-			return -1;		
+		// 로그인 이메일과 예약자 이메일이 같은지
+		if (email.equals(loginEmail) == false)
+			return -1;
 		try {
-			updateCnt=reservationInfoDao.updateCancelFlag(reservationInfoId);	
-		}catch (Exception e) {
+			updateCnt = reservationInfoDao.updateCancelFlag(reservationInfoId);
+		} catch (Exception e) {
 			return -1;
 		}
 		return updateCnt;

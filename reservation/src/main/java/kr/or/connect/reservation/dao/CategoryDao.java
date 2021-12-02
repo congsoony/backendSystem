@@ -1,5 +1,7 @@
 package kr.or.connect.reservation.dao;
 
+import static kr.or.connect.reservation.dao.sqls.CategoryDaoSqls.SELECT_ALL;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -12,7 +14,6 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
 import kr.or.connect.reservation.dto.Category;
-import static kr.or.connect.reservation.dao.sqls.CategoryDaoSqls.*;
 
 @Repository
 public class CategoryDao {

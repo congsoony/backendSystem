@@ -1,9 +1,5 @@
 package kr.or.connect.reservation.service;
 
-import static kr.or.connect.reservation.dao.sqls.ProductDaoSqls.ALL_COUNT;
-import static kr.or.connect.reservation.dao.sqls.ProductDaoSqls.SELECT_ALL;
-
-import java.util.Collections;
 import java.util.List;
 
 import kr.or.connect.reservation.dto.Product;

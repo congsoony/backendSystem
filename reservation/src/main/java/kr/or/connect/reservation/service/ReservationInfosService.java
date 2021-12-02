@@ -3,7 +3,6 @@ package kr.or.connect.reservation.service;
 import java.util.List;
 
 import kr.or.connect.reservation.dto.MyReservationInfo;
-import kr.or.connect.reservation.dto.ReservationInfo;
 import kr.or.connect.reservation.dto.ReservationInfoResponse;
 import kr.or.connect.reservation.dto.ReservationInfosRequest;
 
