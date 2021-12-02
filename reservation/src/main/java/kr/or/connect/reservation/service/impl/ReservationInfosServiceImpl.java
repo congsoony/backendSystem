@@ -52,11 +52,6 @@ public class ReservationInfosServiceImpl implements ReservationInfosService {
 		return res;
 	}
 
-	@Override
-	@Transactional(readOnly = true)
-	public ReservationInfo getReservationInfo(int id) {
-		return reservationInfoDao.getReservationInfo(id);
-	}
 
 	@Override
 	@Transactional(readOnly = true)

@@ -9,7 +9,6 @@ import kr.or.connect.reservation.dto.ReservationInfosRequest;
 
 public interface ReservationInfosService {
 	ReservationInfoResponse makeReservation(ReservationInfosRequest data,String loginEmail);
-	ReservationInfo getReservationInfo(int id);
 	List<MyReservationInfo> getMyReservationInfos(String email);
 	int cancelReservation(int reservationInfoId,String loginEmail);
 }
