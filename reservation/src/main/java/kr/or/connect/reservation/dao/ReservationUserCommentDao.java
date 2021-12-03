@@ -11,6 +11,8 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import kr.or.connect.reservation.dto.ReservationUserComment;
+import kr.or.connect.reservation.dto.UserComment;
+
 import static kr.or.connect.reservation.dao.sqls.ReservationUserCommentDaoSqls.*;
 
 import java.util.Collections;
@@ -39,8 +41,7 @@ public class ReservationUserCommentDao {
 	public Integer getTotalCountByProductId(int productId) {
 		return jdbc.queryForObject(SELECT_TOTAL_COUNT+BY_PRODUCT_ID,Collections.singletonMap("productId", productId), Integer.class);
 	}
-	public Integer insertReservationUserComment(ReservationUserComment data) {
-		
+	public Integer insertReservationUserComment(UserComment data) {
 		BeanPropertySqlParameterSource params =new BeanPropertySqlParameterSource(data);
 		KeyHolder keyHolder =new GeneratedKeyHolder();
 		jdbc.update(INSERT_USER_COMMENT, params,keyHolder);
