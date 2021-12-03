@@ -5,10 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import kr.or.connect.reservation.dao.FileInfoDao;
 import kr.or.connect.reservation.dao.ReservationInfoDao;
 import kr.or.connect.reservation.dao.ReservationUserCommentDao;
+import kr.or.connect.reservation.dao.ReservationUserCommentImageDao;
 import kr.or.connect.reservation.dao.UserDao;
+import kr.or.connect.reservation.dto.FileInfoTable;
 import kr.or.connect.reservation.dto.ReservationUserComment;
 import kr.or.connect.reservation.dto.UserComment;
 import kr.or.connect.reservation.service.ReservationUserCommentService;
@@ -21,6 +25,11 @@ public class ReservationUserCommentServiceImpl implements ReservationUserComment
 	private UserDao userDao;
 	@Autowired
 	private ReservationInfoDao reservationInfoDao;
+
+	@Autowired
+	private FileInfoDao fileInfoDao;
+	@Autowired
+	private ReservationUserCommentImageDao reservationUserCommentImageDao;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -47,15 +56,23 @@ public class ReservationUserCommentServiceImpl implements ReservationUserComment
 		int userId = userDao.getUserIdByEmail(email);
 		if (reservationInfoDao.existReservationInfo(reservationInfoId, userId) == false)
 			throw new IllegalArgumentException();
-		
-		Integer productId = reservationInfoDao.getProductId(reservationInfoId);
-		UserComment data = new UserComment();
-		data.setReservationInfoId(reservationInfoId);
-		data.setScore(score);
-		data.setComment(comment);
-		data.setProductId(productId);
-		data.setUserId(userId);
-		dao.insertReservationUserComment(data);
+		int productId = reservationInfoDao.getProductId(reservationInfoId);
+		dao.insertReservationUserComment(reservationInfoId, score, comment, productId, userId);
+		return productId;
+	}
+
+	@Override
+	@Transactional
+	public Integer addCommentAndFile(int reservationInfoId, int score, String comment, String email,
+			FileInfoTable fileData)throws IllegalArgumentException {
+		int userId = userDao.getUserIdByEmail(email);
+		if (reservationInfoDao.existReservationInfo(reservationInfoId, userId) == false)
+			throw new IllegalArgumentException();
+
+		int productId = reservationInfoDao.getProductId(reservationInfoId);
+		int reservationUserCommentId = dao.insertReservationUserComment(reservationInfoId, score, comment, productId, userId);
+		int fileId = fileInfoDao.insertFileInfo(fileData.getFileName(), fileData.getSaveFileName(), fileData.getContentType());
+		reservationUserCommentImageDao.insertReservationUserCommentImage(reservationInfoId, reservationUserCommentId, fileId);
 		return productId;
 	}
 
