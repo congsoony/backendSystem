@@ -12,5 +12,5 @@ public class ReservationUserCommentImageDaoSqls {
 	public static final String BY_RESERVATION_USER_COMMENT_ID = "where ruci.id = :reservationUserCommentId\r\n";
 	
 	public static final String INSERT_USER_COMMENT_IMAGE="insert into reservation_user_comment_image(reservation_info_id, reservation_user_comment_id, file_id) \r\n"
-			+ "values (:reservationInfoId, reservationUserCommentId, fileId)";
+			+ "values (:reservationInfoId, :reservationUserCommentId, :fileId)";
 }
