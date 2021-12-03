@@ -41,7 +41,14 @@ public class ReservationUserCommentDao {
 	public Integer getTotalCountByProductId(int productId) {
 		return jdbc.queryForObject(SELECT_TOTAL_COUNT+BY_PRODUCT_ID,Collections.singletonMap("productId", productId), Integer.class);
 	}
-	public Integer insertReservationUserComment(UserComment data) {
+	public Integer insertReservationUserComment(int reservationInfoId,int score,String comment,int productId,int userId) {
+		UserComment data = new UserComment();
+		data.setReservationInfoId(reservationInfoId);
+		data.setScore(score);
+		data.setComment(comment);
+		data.setProductId(productId);
+		data.setUserId(userId);
+		
 		BeanPropertySqlParameterSource params =new BeanPropertySqlParameterSource(data);
 		KeyHolder keyHolder =new GeneratedKeyHolder();
 		jdbc.update(INSERT_USER_COMMENT, params,keyHolder);
