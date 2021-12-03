@@ -10,6 +10,7 @@ import kr.or.connect.reservation.dao.ReservationInfoDao;
 import kr.or.connect.reservation.dao.ReservationUserCommentDao;
 import kr.or.connect.reservation.dao.UserDao;
 import kr.or.connect.reservation.dto.ReservationUserComment;
+import kr.or.connect.reservation.dto.UserComment;
 import kr.or.connect.reservation.service.ReservationUserCommentService;
 
 @Service
@@ -46,14 +47,14 @@ public class ReservationUserCommentServiceImpl implements ReservationUserComment
 		int userId = userDao.getUserIdByEmail(email);
 		if (reservationInfoDao.existReservationInfo(reservationInfoId, userId) == false)
 			throw new IllegalArgumentException();
-
+		
 		Integer productId = reservationInfoDao.getProductId(reservationInfoId);
-
-		ReservationUserComment data = new ReservationUserComment();
+		UserComment data = new UserComment();
 		data.setReservationInfoId(reservationInfoId);
 		data.setScore(score);
 		data.setComment(comment);
 		data.setProductId(productId);
+		data.setUserId(userId);
 		dao.insertReservationUserComment(data);
 		return productId;
 	}
