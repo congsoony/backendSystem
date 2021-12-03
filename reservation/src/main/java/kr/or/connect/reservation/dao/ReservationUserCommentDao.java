@@ -4,7 +4,10 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import kr.or.connect.reservation.dto.ReservationUserComment;
@@ -25,6 +28,7 @@ public class ReservationUserCommentDao {
 	public Integer getAvgScoreByDisplayInfoId(int displayId) {
 		return jdbc.queryForObject(SELECT_AVG_SCORE+BY_DISPLAY_INFO_ID,Collections.singletonMap("displayInfoId", displayId), Integer.class);
 	}
+	
 	public List<ReservationUserComment> selectByProductId(int productId,int start,int limit) {
 		Map<String, Integer> params =new HashMap<>();
 		params.put("start", start);
@@ -35,4 +39,12 @@ public class ReservationUserCommentDao {
 	public Integer getTotalCountByProductId(int productId) {
 		return jdbc.queryForObject(SELECT_TOTAL_COUNT+BY_PRODUCT_ID,Collections.singletonMap("productId", productId), Integer.class);
 	}
+	public Integer insertReservationUserComment(ReservationUserComment data) {
+		//values(:productId,:reservationInfoId,:userId,:score,:comment,now(),now())";
+		BeanPropertySqlParameterSource params =new BeanPropertySqlParameterSource(data);
+		KeyHolder keyHolder =new GeneratedKeyHolder();
+		jdbc.update(INSERT_USER_COMMENT, params,keyHolder);
+		return keyHolder.getKey().intValue();
+	}
+	
 }
