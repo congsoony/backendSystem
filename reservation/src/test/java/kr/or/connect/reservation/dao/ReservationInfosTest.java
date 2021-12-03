@@ -71,4 +71,14 @@ public class ReservationInfosTest {
 	public void printReservationEmail() {
 		System.out.println(dao.getReservationEmail(1));
 	}
+	
+	@Test
+	public void existReservation() {
+		System.out.println(dao.existReservationInfo(1, 1));
+	}
+	
+	@Test
+	public void getProductId() {
+		System.out.println(dao.getProductId(1));
+	}
 }
