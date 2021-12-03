@@ -61,4 +61,7 @@ public class ReservationInfoDao {
 	public String getReservationEmail(int id) {
 		return jdbc.queryForObject(SELECT_RESERVATION_EMAIL, Collections.singletonMap("id", id), String.class);
 	}
+	public Boolean existReservationInfo(int id) {
+		return jdbc.queryForObject(EXIST_RESERVATION_INFO, Collections.singletonMap("id", id), Boolean.class);
+	}
 }

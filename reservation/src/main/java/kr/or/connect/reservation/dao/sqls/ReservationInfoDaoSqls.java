@@ -24,4 +24,6 @@ public class ReservationInfoDaoSqls {
 
 	public static final String SELECT_RESERVATION_EMAIL = "select u.email as email from reservation_info ri\r\n"
 			+ "inner join user u on u.id = ri.user_id\r\n" + "where ri.id =:id";
+	public static final String EXIST_RESERVATION_INFO = "select exists (select * from reservation_info ri where ri.id =id) as chk";
+	
 }
