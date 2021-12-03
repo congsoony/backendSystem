@@ -18,4 +18,7 @@ public class ReservationUserCommentDaoSqls {
 			+ "inner join reservation_info ri on ri.id = ruc.reservation_info_id\r\n"
 			+ "inner join user u on u.id = ruc.user_id\r\n";
 	public static final String BY_PRODUCT_ID = "where ruc.product_id =:productId\r\n";
+	
+	public static final String INSERT_USER_COMMENT="insert into reservation_user_comment(product_id,reservation_info_id,user_id,score,comment,create_date,modify_date)\r\n"
+			+ "values(:productId,:reservationInfoId,:userId,:score,:comment,now(),now())";
 }
