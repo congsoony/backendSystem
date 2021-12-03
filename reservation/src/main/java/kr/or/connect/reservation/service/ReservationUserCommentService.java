@@ -11,4 +11,5 @@ public interface ReservationUserCommentService {
 	List<ReservationUserComment> getDisplayInfos(int productId, int start);
 
 	Integer getTotalCount(int productId);
+	Integer postComment(int reservationInfoId,int score,String comment,String email);
 }

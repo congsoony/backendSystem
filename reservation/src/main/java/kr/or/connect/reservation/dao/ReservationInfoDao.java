@@ -17,7 +17,9 @@ import kr.or.connect.reservation.dto.ReservationInfosRequest;
 import static kr.or.connect.reservation.dao.sqls.ReservationInfoDaoSqls.*;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class ReservationInfoDao {
@@ -46,8 +48,7 @@ public class ReservationInfoDao {
 	}
 
 	public List<MyReservationInfo> getMyReservationInfos(String email) {
-		return jdbc.query(SELECT_RESERVATIONS + BY_USER_EMAIL, Collections.singletonMap("email", email),
-				myRowMapper);
+		return jdbc.query(SELECT_RESERVATIONS + BY_USER_EMAIL, Collections.singletonMap("email", email), myRowMapper);
 	}
 
 	public ReservationInfo getReservationInfo(int id) {
@@ -57,11 +58,19 @@ public class ReservationInfoDao {
 	public int updateCancelFlag(int id) {
 		return jdbc.update(UPDATE_CANCLE_FLAG_BY_ID, Collections.singletonMap("id", id));
 	}
-	
+
 	public String getReservationEmail(int id) {
 		return jdbc.queryForObject(SELECT_RESERVATION_EMAIL, Collections.singletonMap("id", id), String.class);
 	}
-	public Boolean existReservationInfo(int id) {
-		return jdbc.queryForObject(EXIST_RESERVATION_INFO, Collections.singletonMap("id", id), Boolean.class);
+
+	public Boolean existReservationInfo(int id, int userId) {
+		Map<String, Integer> params = new HashMap<>();
+		params.put("id", id);
+		params.put("userId", userId);
+		return jdbc.queryForObject(EXIST_RESERVATION_INFO, params, Boolean.class);
+	}
+
+	public Integer getProductId(int id) {
+		return jdbc.queryForObject(SELECT_PRODUCT_ID, Collections.singletonMap("id", id), Integer.class);
 	}
 }

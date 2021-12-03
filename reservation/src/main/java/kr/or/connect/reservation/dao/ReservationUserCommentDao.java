@@ -40,7 +40,7 @@ public class ReservationUserCommentDao {
 		return jdbc.queryForObject(SELECT_TOTAL_COUNT+BY_PRODUCT_ID,Collections.singletonMap("productId", productId), Integer.class);
 	}
 	public Integer insertReservationUserComment(ReservationUserComment data) {
-		//values(:productId,:reservationInfoId,:userId,:score,:comment,now(),now())";
+		
 		BeanPropertySqlParameterSource params =new BeanPropertySqlParameterSource(data);
 		KeyHolder keyHolder =new GeneratedKeyHolder();
 		jdbc.update(INSERT_USER_COMMENT, params,keyHolder);
