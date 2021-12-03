@@ -1,6 +1,6 @@
 package kr.or.connect.reservation.dto;
 
-public class FileInfo {
+public class FileInfoTable {
 	private Integer id;
 	private String fileName;
 	private String saveFileName;
