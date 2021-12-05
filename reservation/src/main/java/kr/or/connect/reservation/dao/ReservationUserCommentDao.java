@@ -24,11 +24,26 @@ import java.util.Map;
 public class ReservationUserCommentDao {
 	private NamedParameterJdbcTemplate jdbc;
 	private RowMapper<ReservationUserComment> rowMapper = BeanPropertyRowMapper.newInstance(ReservationUserComment.class);
+	private RowMapper<UserComment> commentRowMapper = BeanPropertyRowMapper.newInstance(UserComment.class);
 	public ReservationUserCommentDao(DataSource dataSource) {
 		this.jdbc = new NamedParameterJdbcTemplate(dataSource);
 	}
 	public Integer getAvgScoreByDisplayInfoId(int displayId) {
 		return jdbc.queryForObject(SELECT_AVG_SCORE+BY_DISPLAY_INFO_ID,Collections.singletonMap("displayInfoId", displayId), Integer.class);
+	}
+	
+	public List<UserComment> selectUserCommentByProductId(int productId,int start,int limit) {
+		Map<String, Integer> params =new HashMap<>();
+		params.put("start", start);
+		params.put("limit", limit);
+		params.put("productId", productId);
+		return jdbc.query(SELECT_USER_COMMENT+LIMIT_BY_PRODUCT_ID,params,commentRowMapper);
+	}
+	public List<UserComment> selectAllUserComment(int start,int limit) {
+		Map<String, Integer> params =new HashMap<>();
+		params.put("start", start);
+		params.put("limit", limit);
+		return jdbc.query(SELECT_USER_COMMENT+ORDER_LIMIT,params,commentRowMapper);
 	}
 	
 	public List<ReservationUserComment> selectByProductId(int productId,int start,int limit) {
@@ -41,6 +56,10 @@ public class ReservationUserCommentDao {
 	public Integer getTotalCountByProductId(int productId) {
 		return jdbc.queryForObject(SELECT_TOTAL_COUNT+BY_PRODUCT_ID,Collections.singletonMap("productId", productId), Integer.class);
 	}
+	public Integer getAllTotalCount() {
+		return jdbc.queryForObject(SELECT_TOTAL_COUNT,Collections.emptyMap(), Integer.class);
+	}
+	
 	public Integer insertReservationUserComment(int reservationInfoId,int score,String comment,int productId,int userId) {
 		UserComment data = new UserComment();
 		data.setReservationInfoId(reservationInfoId);
