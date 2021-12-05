@@ -43,7 +43,7 @@ public class ReservationInfosApiController {
 			Principal principal) {
 		// 날짜형식 잘못된경우
 		try {
-			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyy.MM.dd");
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
 			LocalDate.parse(reservationRequest.getReservationYearMonthDay(), formatter);
 		} catch (DateTimeParseException e) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
