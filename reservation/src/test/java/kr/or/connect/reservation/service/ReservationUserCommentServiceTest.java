@@ -1,6 +1,5 @@
 package kr.or.connect.reservation.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.Test;
@@ -11,7 +10,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import kr.or.connect.reservation.config.ApplicationConfig;
 import kr.or.connect.reservation.dto.FileInfoTable;
-import kr.or.connect.reservation.dto.ReservationUserCommentImage;
 import kr.or.connect.reservation.dto.UserComment;
 
 @RunWith(SpringJUnit4ClassRunner.class)

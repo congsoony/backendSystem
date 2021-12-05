@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import junit.framework.Assert;
 import kr.or.connect.reservation.config.ApplicationConfig;
 import kr.or.connect.reservation.dto.MyReservationInfo;
 import kr.or.connect.reservation.dto.ReservationInfoPrice;
