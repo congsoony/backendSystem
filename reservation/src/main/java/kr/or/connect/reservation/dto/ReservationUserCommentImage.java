@@ -1,8 +1,5 @@
 package kr.or.connect.reservation.dto;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 public class ReservationUserCommentImage {
 	private Integer id;
 	private Integer reservationInfoId;
@@ -11,8 +8,8 @@ public class ReservationUserCommentImage {
 	private String saveFileName;
 	private String contentType;
 	private Integer deleteFlag;
-	private LocalDateTime createDate;
-	private LocalDateTime modifyDate;
+	private Long createDate;
+	private Long modifyDate;
 	
 	public Integer getId() {
 		return id;
@@ -70,19 +67,19 @@ public class ReservationUserCommentImage {
 		this.deleteFlag = deleteFlag;
 	}
 
-	public LocalDateTime getCreateDate() {
+	public Long getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(LocalDateTime createDate) {
+	public void setCreateDate(Long createDate) {
 		this.createDate = createDate;
 	}
 
-	public LocalDateTime getModifyDate() {
+	public Long getModifyDate() {
 		return modifyDate;
 	}
 
-	public void setModifyDate(LocalDateTime modifyDate) {
+	public void setModifyDate(Long modifyDate) {
 		this.modifyDate = modifyDate;
 	}
 

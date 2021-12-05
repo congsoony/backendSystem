@@ -1,6 +1,6 @@
 package kr.or.connect.reservation.dao;
 
-import static kr.or.connect.reservation.dao.sqls.ReservationUserCommentImageDaoSqls.BY_RESERVATION_USER_COMMENT_ID;
+import static kr.or.connect.reservation.dao.sqls.ReservationUserCommentImageDaoSqls.BY_RESERVATION_INFO_ID;
 import static kr.or.connect.reservation.dao.sqls.ReservationUserCommentImageDaoSqls.SELECT_ALL;
 
 import java.util.Collections;
@@ -26,8 +26,8 @@ public class ReservationUserCommentImageDao {
 	public ReservationUserCommentImageDao(DataSource dataSource) {
 		this.jdbc= new NamedParameterJdbcTemplate(dataSource);
 	}
-	List<ReservationUserCommentImage> getReservationUserCommentImages(int reservationUserCommentId){
-		return jdbc.query(SELECT_ALL+BY_RESERVATION_USER_COMMENT_ID, Collections.singletonMap("reservationUserCommentId",reservationUserCommentId),rowMapper);
+	public List<ReservationUserCommentImage> getReservationUserCommentImages(int reservationInfoId){
+		return jdbc.query(SELECT_ALL+BY_RESERVATION_INFO_ID, Collections.singletonMap("reservationInfoId",reservationInfoId),rowMapper);
 	}
 	public Integer insertReservationUserCommentImage(int reservationInfoId,int reservationUserCommentId,int fileId) {
 		ReservationUserCommentImageTable data =new ReservationUserCommentImageTable();
