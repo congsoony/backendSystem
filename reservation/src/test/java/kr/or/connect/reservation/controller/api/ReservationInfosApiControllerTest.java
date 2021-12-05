@@ -79,12 +79,11 @@ public class ReservationInfosApiControllerTest extends TestCase {
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .get("/api/reservationInfos")
                 .principal(SecurityContextHolder.getContext().getAuthentication());
-
+        
         // 해당 api 호출하여 200나오는지 확인
         mockMvc.perform(requestBuilder)
                 .andExpect(status().isOk())
                 .andDo(print());
-
         // 해당 api가 호출되었을 때 해당 service 메소드 1번 호출 검증
         verify(reservationInfosService, times(1)).getMyReservationInfos(any());
     }
@@ -122,7 +121,7 @@ public class ReservationInfosApiControllerTest extends TestCase {
         reservationInfoResponse.setReservationDate("2021.12.01");
         reservationInfoResponse.setCreateDate("2021.11.30");
         reservationInfoResponse.setModifyDate("2021.11.30");
-
+        
         // reservationInfosService.makeReservation 호출했을 때 return 객체 지정
         when(reservationInfosService.makeReservation(any(), anyString())).thenReturn(reservationInfoResponse);
 
@@ -137,7 +136,7 @@ public class ReservationInfosApiControllerTest extends TestCase {
         mockMvc.perform(requestBuilder)
                 .andExpect(status().isOk())
                 .andDo(print());
-
+        
         // 해당 api가 호출되었을 때 해당 service 메소드 1번 호출 검증
         verify(reservationInfosService, times(1)).makeReservation(any(), anyString());
     }

@@ -3,6 +3,7 @@ package kr.or.connect.reservation.dto;
 public class ReservationUserCommentImage {
 	private Integer id;
 	private Integer reservationInfoId;
+	private Integer reservationUserCommentId;
 	private Integer fileId;
 	private String fileName;
 	private String saveFileName;
@@ -10,7 +11,7 @@ public class ReservationUserCommentImage {
 	private Integer deleteFlag;
 	private Long createDate;
 	private Long modifyDate;
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -25,6 +26,14 @@ public class ReservationUserCommentImage {
 
 	public void setReservationInfoId(Integer reservationInfoId) {
 		this.reservationInfoId = reservationInfoId;
+	}
+
+	public Integer getReservationUserCommentId() {
+		return reservationUserCommentId;
+	}
+
+	public void setReservationUserCommentId(Integer reservationUserCommentId) {
+		this.reservationUserCommentId = reservationUserCommentId;
 	}
 
 	public Integer getFileId() {
@@ -85,12 +94,10 @@ public class ReservationUserCommentImage {
 
 	@Override
 	public String toString() {
-		return "ReservationUserCommentImage [id=" + id + ", reservationInfoId=" + reservationInfoId + ", fileId="
-				+ fileId + ", fileName=" + fileName + ", saveFileName=" + saveFileName + ", contentType=" + contentType
-				+ ", deleteFlag=" + deleteFlag + ", createDate=" + createDate + ", modifyDate=" + modifyDate + "]";
+		return "ReservationUserCommentImage [id=" + id + ", reservationInfoId=" + reservationInfoId
+				+ ", reservationUserCommentId=" + reservationUserCommentId + ", fileId=" + fileId + ", fileName="
+				+ fileName + ", saveFileName=" + saveFileName + ", contentType=" + contentType + ", deleteFlag="
+				+ deleteFlag + ", createDate=" + createDate + ", modifyDate=" + modifyDate + "]";
 	}
-	
-	
-	
-	
+
 }
