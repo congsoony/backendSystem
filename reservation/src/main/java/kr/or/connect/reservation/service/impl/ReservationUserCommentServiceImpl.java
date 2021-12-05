@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.connect.reservation.dao.FileInfoDao;
 import kr.or.connect.reservation.dao.ReservationInfoDao;
@@ -76,4 +75,33 @@ public class ReservationUserCommentServiceImpl implements ReservationUserComment
 		return productId;
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public List<UserComment> getComments(int productId, int start) {
+		List<UserComment> list = dao.selectUserCommentByProductId(productId, start, LIMIT);
+		for(UserComment d:list) {
+			d.setReservationUserCommentImages(reservationUserCommentImageDao.getReservationUserCommentImages(d.getReservationInfoId()));
+		}
+		return list;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<UserComment> getAllComments(int start) {
+		List<UserComment> list = dao.selectAllUserComment(start, LIMIT);
+		for(UserComment d:list) {
+			d.setReservationUserCommentImages(reservationUserCommentImageDao.getReservationUserCommentImages(d.getReservationInfoId()));
+		}
+		return list;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Integer getAllTotalCount() {
+		return dao.getAllTotalCount();
+	}
+
+	
+	
+	
 }
