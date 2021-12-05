@@ -3,6 +3,7 @@ package kr.or.connect.reservation.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -23,7 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		// 해당경로에 대한 요청은 인증/인가 처리하지 않도록 무시합니다.
-		web.ignoring().antMatchers("/api/categories", "/api/displayinfos**", "/api/promotions", "/api/displayinfos/**"
+		web.ignoring().antMatchers("/api/categories", "/api/displayinfos**", "/api/promotions", "/api/displayinfos/**",
+				"/api/files**","/api/files/**"
 		// swagger관련 리소스 시큐리티 필터 제거
 				, "/v2/api-docs", "/swagger-resources/**", "swagger-ui.html", "/webjars/**", "/swagger/**");
 	}
@@ -33,11 +35,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().authorizeRequests()
-				.antMatchers("/main", "/users/loginerror").permitAll()
+				.antMatchers("/main", "/users/loginerror").permitAll()				
+				.antMatchers(HttpMethod.GET, "/api/comments").permitAll()
 				//로그인도 되어있어야하고 USER라는 권한을 가지고 있어야 접근할수있음
-				.antMatchers("/api/reservationInfos").hasAnyRole("USER","ADMIN")
+				.antMatchers("/api/reservationInfos","/api/comments").hasAnyRole("USER","ADMIN")
 				.anyRequest().authenticated()
 				.and()
+				
 					//loginform을 보여주는 controller 메소드가 작성되어있어야함 UserController에 /users/lgoinform으로 작성되어있음
 					.formLogin().loginPage("/users/loginform")
 					//loginform에서 input tag의 이름이 userId 와 password로 되어있어야함
