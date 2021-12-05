@@ -13,6 +13,8 @@ import org.springframework.stereotype.Repository;
 import kr.or.connect.reservation.dto.FileInfoTable;
 import static kr.or.connect.reservation.dao.sqls.FileInfoDaoSqls.*;
 
+import java.util.Collections;
+
 @Repository
 public class FileInfoDao {
 	private NamedParameterJdbcTemplate jdbc;
@@ -24,7 +26,7 @@ public class FileInfoDao {
 
 	public Integer insertFileInfo(String fileName, String saveFileName, String contentType) {
 		FileInfoTable data = new FileInfoTable();
-		data.setFileName(saveFileName);
+		data.setFileName(fileName);
 		data.setSaveFileName(saveFileName);
 		data.setContentType(contentType);
 		BeanPropertySqlParameterSource params = new BeanPropertySqlParameterSource(data);
@@ -32,5 +34,8 @@ public class FileInfoDao {
 		jdbc.update(INSERT_FILE_INFO, params, keyHolder);
 		return keyHolder.getKey().intValue();
 	}
-
+	
+	public FileInfoTable selectFileInfo(int id) {
+		return jdbc.queryForObject(SELECT_ALL+BY_ID, Collections.singletonMap("id", id), rowMapper);
+	}
 }
