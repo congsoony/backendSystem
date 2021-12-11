@@ -38,86 +38,34 @@ public class CommentApiController {
 			@RequestParam String comment, @RequestParam(required = false) MultipartFile file, Principal principal) {
 		int productId;
 		Map<String, Object> map = new HashMap<>();
-		if (file == null || file.isEmpty()) {
-			try {
-				productId = reservationUserCommentService.postComment(reservationInfoId, score, comment,
-						principal.getName());
-			} catch (IllegalArgumentException e) {
-				return new ResponseEntity<>(Collections.singletonMap("result", "fail"), HttpStatus.BAD_REQUEST);
-			}
-
-		} else {
-			// 이미지 타입아닌경우
-			if (file.getContentType().startsWith("image") == false) {
-				return new ResponseEntity<>(Collections.singletonMap("result", "fail"), HttpStatus.BAD_REQUEST);
-			}
-
-			LocalDateTime date = LocalDateTime.now();
-			String rootPath = System.getProperty("user.dir");
-			// 날짜별로 폴더
-			String dir = rootPath + File.separator + "img" + File.separator + date.getYear() + File.separator
-					+ date.getMonthValue() + File.separator + date.getDayOfMonth() + File.separator;
-			File dirFile = new File(dir);
-			dirFile.mkdirs();
-
-			String originalName = file.getOriginalFilename();
-			String name = originalName.substring(0, originalName.lastIndexOf('.'));
-			String type = originalName.substring(originalName.lastIndexOf('.'));
-			String saveFileName = dir + name + type;
-			String fileName = name + type;
-			File efile = new File(saveFileName);
-			int num = 1;
-			while (efile.exists()) {
-				saveFileName = dir + name + "_" + num + type;
-				fileName = name + "_" + num + type;
-				num++;
-				efile = new File(saveFileName);
-			}
-
-			try (FileOutputStream fos = new FileOutputStream(saveFileName);
-					InputStream is = file.getInputStream();
-					BufferedOutputStream bout = new BufferedOutputStream(fos);
-					BufferedInputStream bis = new BufferedInputStream(is);) {
-				int readCount = 0;
-				byte[] buffer = new byte[1024];
-				while ((readCount = bis.read(buffer)) != -1) {
-					bout.write(buffer, 0, readCount);
-				}
-			} catch (Exception ex) {
-				throw new RuntimeException("file Save Error");
-			}
-
-			try {
-				FileInfoTable fileData = new FileInfoTable();
-				fileData.setFileName(fileName);
-				fileData.setContentType(file.getContentType());
-				fileData.setSaveFileName(saveFileName);
-				productId = reservationUserCommentService.addCommentAndFile(reservationInfoId, score, comment,
-						principal.getName(), fileData);
-			} catch (IllegalArgumentException e) {
-				return new ResponseEntity<>(Collections.singletonMap("result", "fail"), HttpStatus.BAD_REQUEST);
-			}
+		try {
+			productId = reservationUserCommentService.postComment(reservationInfoId, score, comment,
+					principal.getName(), file);
+		} catch (IllegalArgumentException e) {
+			return new ResponseEntity<>(Collections.singletonMap("result", "fail"), HttpStatus.BAD_REQUEST);
+		} catch (Exception e) {
+			return new ResponseEntity<>(Collections.singletonMap("result", "fail"), HttpStatus.BAD_REQUEST);
 		}
-		
+
 		map.put("result", "success");
 		map.put("productId", productId);
 		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
-	
+
 	@GetMapping
-	public ResponseEntity<Map<String, Object>> getComments(@RequestParam(defaultValue = "0") int productId,@RequestParam(defaultValue = "0") int start){
-		Map<String,Object> map =new HashMap<>();
+	public ResponseEntity<Map<String, Object>> getComments(@RequestParam(defaultValue = "0") int productId,
+			@RequestParam(defaultValue = "0") int start) {
+		Map<String, Object> map = new HashMap<>();
 		List<UserComment> list;
-		if(productId==0) {
+		if (productId == 0) {
 			list = reservationUserCommentService.getAllComments(start);
 			map.put("totalCount", reservationUserCommentService.getAllTotalCount());
-		}
-		else {
+		} else {
 			list = reservationUserCommentService.getComments(productId, start);
-			map.put("totalCount", reservationUserCommentService.getTotalCount(productId));		
-		}		
+			map.put("totalCount", reservationUserCommentService.getTotalCount(productId));
+		}
 		map.put("commentCount", list.size());
 		map.put("reservationUserComments", list);
-		return new ResponseEntity<>(map,HttpStatus.OK);
+		return new ResponseEntity<>(map, HttpStatus.OK);
 	}
 }
