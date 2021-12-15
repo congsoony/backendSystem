@@ -14,16 +14,10 @@ public class FileInfoServiceImpl implements FileInfoService{
 	
 	@Autowired
 	private FileInfoDao fileInfoDao;
-	@Value("${img.path}")
-	private String rootPath;
 	@Override
 	@Transactional(readOnly = true)
 	public FileInfoTable getFileInfo(int fileId) {
 		return fileInfoDao.selectFileInfo(fileId);
-	}
-	@Override
-	public String getRootpath() {
-		return rootPath;
 	}
 	
 }

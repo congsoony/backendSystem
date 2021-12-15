@@ -15,7 +15,7 @@ public interface ReservationUserCommentService {
 	List<ReservationUserComment> getDisplayInfos(int productId, int start);
 
 	Integer getTotalCount(int productId);
-	Integer postComment(int reservationInfoId,int score,String comment,String email,MultipartFile file);
+	Integer postComment(String rootPath,int reservationInfoId,int score,String comment,String email,MultipartFile file);
 	Integer addCommentAndFile(int reservationInfoId, int score, String comment, String email,FileInfoTable fileData);
 	List<UserComment> getComments(int productId,int start);
 	List<UserComment> getAllComments(int start);

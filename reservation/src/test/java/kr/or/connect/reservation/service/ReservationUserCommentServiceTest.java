@@ -5,6 +5,7 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -18,12 +19,13 @@ public class ReservationUserCommentServiceTest {
 	
 	@Autowired
 	private ReservationUserCommentService reservationUserCommentService;
-	
+	@Value("${img.path}")
+	private String rootPath;
 	
 	@Test
 	public void postCommentTest() {
 		String email= "carami@connect.co.kr";
-		int productId = reservationUserCommentService.postComment(1, 3, "멋진곳이군", email,null);
+		int productId = reservationUserCommentService.postComment(rootPath,1, 3, "멋진곳이군", email,null);
 		System.out.println(productId);
 		System.out.println("성공");
 	}
@@ -31,7 +33,7 @@ public class ReservationUserCommentServiceTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void errorTest() {
 		String email="kimjinsu@connect.co.kr";
-		int productId = reservationUserCommentService.postComment(1, 3, "멋지다", email,null);
+		int productId = reservationUserCommentService.postComment(rootPath,1, 3, "멋지다", email,null);
 	}
 	
 	@Test

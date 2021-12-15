@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,11 +23,12 @@ import kr.or.connect.reservation.service.FileInfoService;
 public class FileApiController {
 	@Autowired
 	private FileInfoService fileInfoService;
-
+	@Value("${img.path}")
+	private String rootPath;
+	
 	@GetMapping("/{fileId}")
 	public void download(@PathVariable int fileId, HttpServletResponse response) {
-
-		String rootPath = fileInfoService.getRootpath();
+	
 		
 		FileInfoTable fileData = fileInfoService.getFileInfo(fileId);
 		// 직접 파일 정보를 변수에 저장해 놨지만, 이 부분이 db에서 읽어왔다고 가정한다.

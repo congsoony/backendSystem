@@ -41,8 +41,7 @@ public class ReservationUserCommentServiceImpl implements ReservationUserComment
 	@Autowired
 	private ReservationUserCommentImageDao reservationUserCommentImageDao;
 
-	@Value("${img.path}")
-	private String rootPath;
+
 	
 	@Override
 	@Transactional(readOnly = true)
@@ -64,7 +63,7 @@ public class ReservationUserCommentServiceImpl implements ReservationUserComment
 
 	@Override
 	@Transactional
-	public Integer postComment(int reservationInfoId, int score, String comment, String email, MultipartFile file)
+	public Integer postComment(String rootPath,int reservationInfoId, int score, String comment, String email, MultipartFile file)
 			throws IllegalArgumentException {
 		int userId = userDao.getUserIdByEmail(email);
 		if (reservationInfoDao.existReservationInfo(reservationInfoId, userId) == false)

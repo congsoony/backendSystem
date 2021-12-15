@@ -1,18 +1,13 @@
 package kr.or.connect.reservation.controller.api;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.security.Principal;
-import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import kr.or.connect.reservation.dto.FileInfoTable;
 import kr.or.connect.reservation.dto.UserComment;
 import kr.or.connect.reservation.service.ReservationUserCommentService;
 
@@ -32,14 +26,17 @@ public class CommentApiController {
 
 	@Autowired
 	private ReservationUserCommentService reservationUserCommentService;
-
+	
+	@Value("${img.path}")
+	private String rootPath;
+	
 	@PostMapping
 	public ResponseEntity<Map<String, Object>> postComment(@RequestParam int reservationInfoId, @RequestParam int score,
 			@RequestParam String comment, @RequestParam(required = false) MultipartFile file, Principal principal) {
 		int productId;
 		Map<String, Object> map = new HashMap<>();
 		try {
-			productId = reservationUserCommentService.postComment(reservationInfoId, score, comment,
+			productId = reservationUserCommentService.postComment(rootPath,reservationInfoId, score, comment,
 					principal.getName(), file);
 		} catch (IllegalArgumentException e) {
 			return new ResponseEntity<>(Collections.singletonMap("result", "fail"), HttpStatus.BAD_REQUEST);
