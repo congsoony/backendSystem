@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -84,4 +85,10 @@ public class MvcConfig implements WebMvcConfigurer {
         multipartResolver.setMaxUploadSize(10485760); // 1024 * 1024 * 10 -> 최대 10mb 사이즈가 저장되도록
         return multipartResolver;
     }
+    
+    //controller 클래스에도 application.properties값을 사용하려면 bean설정을 해야함
+    @Bean
+    public PropertySourcesPlaceholderConfigurer propertyConfig() {
+    	return new PropertySourcesPlaceholderConfigurer();
+    }   
 }
